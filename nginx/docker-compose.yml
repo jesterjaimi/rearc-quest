@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:3000"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./hosts:/etc/hosts
+    depends_on:
+      - web
+    healthcheck:
+      test: "curl --fail http://rearc.quest:3000 || exit 1"
+      interval: 30s
+      timeout: 10s
+      retries: 10
+  web:
+    build: ./quest
+    environment:
+      - VIRTUAL_HOST=rearc.quest
+      - VIRTUAL_PORT=3000
+    ports:
+      - "3000:3000"
