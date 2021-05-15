@@ -8,17 +8,17 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./certs:/etc/nginx/certs
-      - ./hosts:/etc/hosts
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/hosts:/etc/hosts
     depends_on:
-      - web
+      - quest
     healthcheck:
       test: "curl --fail http://rearc.quest:3000 || exit 1"
       interval: 30s
       timeout: 10s
       retries: 10
-  web:
-    build: ./quest
+  quest:
+    build: .
     environment:
       - VIRTUAL_HOST=rearc.quest
       - VIRTUAL_PORT=3000
