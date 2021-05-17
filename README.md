@@ -2,7 +2,7 @@
 
 Herein contains the final submission of the rearc-quest assignment as requested by Cristina Orlando.
 
-This repo contains the terraform ripcord script that fully automates the install of the rearc-quest into AWS, an nginx-proxy that allows http alb access to a load balanced cluster of quest servers being served by an auto-scaling group via a terraform declared launch template. 
+This repo contains the terraform ripcord script that fully automates the install of the rearc-quest into AWS, an nginx-proxy that allows http alb access to a load balanced cluster of quest servers being served by an auto-scaling group via a terraform declared launch template. TLS is also supported.
 
 TLS connections to the quest ec2 instances require direct instance access. I tried to get the alb's to play nicely with my self signed certificates, but I couldn't get it to work. (health checks... bahhhhh!) But if my assumptions are correct, this is acceptable, because I would hope thatin 2021 AWS frowns on such questionable security configurations anyway.
 
