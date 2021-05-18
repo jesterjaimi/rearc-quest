@@ -32,8 +32,8 @@ To test this simply authenticate your local ./aws creds to your aws account, how
 
 It will take a minute for everything to settle, but once you get the greenlight in the aws console, you can test as follows.
 
-    http://$QUEST_ALB_PUBLIC_DNS
-    https://$QUEST_EC2_INSTANCE
+    http://$QUEST_ALB_PUBLIC_DNSNAME
+    https://$QUEST_EC2_INSTANCE_DNSNAME
 
 To tear down the infrastructure once your satisfied, run...
 
